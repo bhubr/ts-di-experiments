@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "outDir": "./lib",
+    "rootDir": "./src"
+  },
+  "include": [
+    "**/src/**/*.ts",
+    "**/test/**/*.ts"
+  ],
+  "exclude": ["node_modules"],
+  "module": "commonjs",
+  "types": ["mocha", "node"]
+}
