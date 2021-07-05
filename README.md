@@ -1,6 +1,6 @@
-# TypeScript Auth Module
+# TypeScript DI Experiments
 
-This is just an experiment.
+This is just an experiment. Translating code from [DIPPP](https://www.manning.com/books/dependency-injection-principles-practices-patterns) book, published by Manning.
 
 ## Setup of TS project
 
