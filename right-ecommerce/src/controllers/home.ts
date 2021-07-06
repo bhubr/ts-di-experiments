@@ -1,6 +1,8 @@
 import * as express from 'express';
 import Product from '../models/product';
 import ProductService from '../services/product';
+import FeaturedProductsViewModel from '../view-models/featured-products';
+import ProductViewModel from '../view-models/product';
 
 class HomeController {
   sitetitle: string = "Mary's e-commerce site";
@@ -15,11 +17,13 @@ class HomeController {
     const service = new ProductService();
 
     const products: Array<Product> = await service.getFeaturedProducts(isPreferredCustomer);
+    const productsViewModels = products.map((p) => new ProductViewModel(p.name, p.unitPrice));
+    const featuredProductsViewModel = new FeaturedProductsViewModel(productsViewModels);
 
     return res.render('home', {
       sitetitle: this.sitetitle,
       pagetitle: 'Home',
-      products,
+      ...featuredProductsViewModel,
       user: req.user,
     });
   }

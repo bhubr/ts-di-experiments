@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start:marys": "npx nodemon -e ts,ejs --exec ts-node marys-ecommerce/src/index.ts",
+    "start:right": "npx nodemon -e ts,ejs --exec ts-node right-ecommerce/src/index.ts",
     "lint": "eslint --ext .ts --fix **/src/**/*.ts",
     "test": "mocha"
   },
@@ -23,6 +24,7 @@
     "ts-node": "^10.0.0"
   },
   "dependencies": {
+    "@formatjs/intl-numberformat": "^7.1.5",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "express-session": "^1.17.2",
