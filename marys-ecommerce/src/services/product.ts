@@ -10,7 +10,7 @@ export default class ProductService {
 
   async getFeaturedProducts(isCustomerPreferred: boolean): Promise<Array<Product>> {
     const rawProducts = await this.db.getProducts();
-    const discount = isCustomerPreferred ? .95 : 1;
+    const discount = isCustomerPreferred ? 0.95 : 1;
     const products: Array<Product> = rawProducts.map((row) => {
       const product = new Product();
       product.id = row.id;
