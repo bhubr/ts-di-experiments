@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start:marys": "npx nodemon --exec ts-node marys-ecommerce/src/index.ts",
+    "start:marys": "npx nodemon -e ts,ejs --exec ts-node marys-ecommerce/src/index.ts",
     "test": "mocha"
   },
   "keywords": [],
@@ -24,6 +24,7 @@
   "dependencies": {
     "ejs": "^3.1.6",
     "express": "^4.17.1",
+    "express-session": "^1.17.2",
     "sqlite3": "^5.0.2"
   }
 }
