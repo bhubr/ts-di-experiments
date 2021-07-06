@@ -8,7 +8,6 @@ class HomeController {
     const service = new ProductService();
 
     const products: Array<Product> = await service.getFeaturedProducts(isPreferredCustomer);
-    console.log(products);
 
     return res.render('home', { products });
   }

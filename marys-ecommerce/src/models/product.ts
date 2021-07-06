@@ -23,12 +23,4 @@ export default class Product {
    * Product featured attribute
    */
   public isFeatured: boolean;
-
-  constructor(id, name, description, isFeatured, unitPrice) {
-    this.id = id;
-    this.name = name;
-    this.description = description;
-    this.isFeatured = isFeatured;
-    this.unitPrice = unitPrice;
-  }
 }
