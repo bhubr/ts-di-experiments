@@ -1,6 +1,5 @@
 import * as Sqlite3 from 'sqlite3';
 import * as path from 'path';
-import Product from './models/product';
 
 const sqlite3 = Sqlite3.verbose();
 const dbFile = path.resolve(__dirname, '..', 'sqlite.db');

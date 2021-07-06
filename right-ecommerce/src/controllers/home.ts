@@ -23,7 +23,7 @@ class HomeController {
 
     const products: Array<DiscountedProduct> = await this.productService.getFeaturedProducts(
       // isPreferredCustomer,
-      req.user || { isInRole: (r: string) => false },
+      req.user || { isInRole: () => false },
     );
     const productsViewModels = products.map((p) => new ProductViewModel(p.name, p.unitPrice));
     const featuredProductsViewModel = new FeaturedProductsViewModel(productsViewModels);
