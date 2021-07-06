@@ -10,9 +10,8 @@
     <a href="/">Home</a> |
     <a href="/about">About</a> |
     <a href="/login-as?username=mary">Login as Mary (preferred customer)</a> |
-    <a href="/login-as?username=guest">Login as Guest (regular customer)</a> |
-    <a href="/logout">Logout</a>
+    <a href="/login-as?username=guest">Login as Guest (regular customer)</a>
     <% if (user) { %>
-      | logged-in as <strong><%= user.username %></strong>
+      | logged-in as <strong><%= user.username %></strong> (<a href="/logout">logout</a>)
     <% } %>
   </nav>
