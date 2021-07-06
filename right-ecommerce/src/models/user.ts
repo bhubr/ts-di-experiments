@@ -1,4 +1,6 @@
-export default class User {
+import IUserContext from './iuser';
+
+export default class User implements IUserContext {
   username: string;
 
   roles: Array<string>;

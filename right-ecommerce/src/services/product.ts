@@ -1,25 +1,31 @@
-import Product from '../models/product';
-import Db from '../db';
+import IProductRepository from '../repositories/iproductrepository';
+import IUserContext from '../models/iuser';
+import DiscountedProduct from '../models/discounted-product';
+import IProductService from './iproduct';
 
-export default class ProductService {
-  private db: Db;
+export default class ProductService implements IProductService {
+  private readonly repository: IProductRepository;
 
-  constructor() {
-    this.db = new Db();
+  // private readonly userContext: IUserContext;
+
+  constructor(
+    repository: IProductRepository = null,
+    // userContext: IUserContext = null,
+  ) {
+    if (repository === null) {
+      throw new Error('ProductService repository');
+    }
+    // if (userContext === null) {
+    //   throw new Error('ProductService userContext');
+    // }
+    this.repository = repository;
+    // this.userContext = userContext;
   }
 
-  async getFeaturedProducts(isCustomerPreferred: boolean): Promise<Array<Product>> {
-    const rawProducts = await this.db.getProducts();
-    const discount = isCustomerPreferred ? 0.95 : 1;
-    const products: Array<Product> = rawProducts.map((row) => {
-      const product = new Product();
-      product.id = row.id;
-      product.name = row.name;
-      product.description = row.description;
-      product.unitPrice = row.unitPrice * discount;
-      product.isFeatured = row.isFeatured;
-      return product;
-    });
-    return products;
+  async getFeaturedProducts(userContext: IUserContext): Promise<Array<DiscountedProduct>> {
+    const rawProducts = await this.repository.getFeaturedProducts();
+    return rawProducts.map(
+      (p) => p.applyDiscountFor(userContext),
+    );
   }
 }

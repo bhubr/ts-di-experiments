@@ -5,9 +5,14 @@ import { resolve } from 'path';
 import HomeController from './controllers/home';
 import AuthController from './controllers/auth';
 import loggedInUserMiddleware from './middlewares/logged-in-user';
+import ProductService from './services/product';
+import SQLProductRepository from './repositories/sqlproductrepository';
+import Db from './db';
 
 const app: express.Application = express();
-const homeController = new HomeController();
+const productRepository = new SQLProductRepository(new Db());
+const productService = new ProductService(productRepository);
+const homeController = new HomeController(productService);
 const authController = new AuthController();
 
 app.set('views', resolve(__dirname, '..', 'views'));
